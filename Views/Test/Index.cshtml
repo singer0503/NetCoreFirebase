@@ -1,0 +1,29 @@
+@model TestViewModel;
+@{
+    ViewData["Title"] = "Test";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>一列數的規則如下: 1、1、2、3、5、8、13、21、34…… 求第30位數是多少，用遞迴演算法實現。</p>
+<p>@Model.data1 </p>
+<br>
+
+<p>使用For迴圈</p>
+<p>@Model.data2</p>
+<br>
+
+<p> 請程式設計實現一個氣泡排序演算法？</p>
+<p>@Model.data3</p>
+<br>
+
+<p> 請以LINQ的語法，找出下列字串陣列中包含”ei”的單字 
+Please use LINQ to determine if any word in the list below that contains the substring “ei”
+string[] words = { "believe", "relief", "receipt", "field" };</p>
+<p>@Model.data4</p>
+<br>
+
+<p> 請以C#寫出一個字串反轉的程式. 
+Please write a method to return a reversed string.
+EX: ReverseString(“abc”), then return “cba”.</p>
+<p>@Model.data5</p>
+<br>

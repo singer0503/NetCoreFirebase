@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Page</title>
+    </head>
+    <body>
+        <h1>Stream to me</h1>
+        <ul id="StreamToMe"></ul>
+
+        <script>
+            (function() {
+                var getWebSocketMessages = function(onMessageReceived)
+                {
+                    var url = `wss://${location.host}/api/Stream`
+                    console.log('url is: ' + url);
+
+                    var webSocket = new WebSocket(url);
+
+                    webSocket.onmessage = onMessageReceived;
+                    webSocket.onclose = function () {
+                        //$('#serverMsg').html('server is closed');
+                        alert('ws.onclose');
+                    };
+                    webSocket.onerror = function () {
+                        //$('#serverMsg').html('server is error');
+                        alert('ws.onerror');
+                    };
+                };
+
+                var ulElement = document.getElementById('StreamToMe');
+
+                getWebSocketMessages(function (message) {
+                    ulElement.innerHTML = ulElement.innerHTML += `<li>${message.data}</li>`
+                });
+            }());
+        </script>
+    </body>
+</html>

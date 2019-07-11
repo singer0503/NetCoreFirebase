@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>RealtimeFirebaseView to me</h1>
+<ul id="StreamToMe"></ul>
+<button id="SendMsgBtn"> send data</button>
+<script>
+    (function() {
+        var url = `wss://${location.host}/Firebase/Get`
+        console.log('url is: ' + url);
+
+        var webSocket = new WebSocket(url);
+
+        var getWebSocketMessages = function(onMessageReceived)
+        {
+            
+
+            webSocket.onmessage = onMessageReceived;
+            webSocket.onclose = function () {
+                //$('#serverMsg').html('server is closed');
+                alert('ws.onclose');
+            };
+            webSocket.onerror = function () {
+                //$('#serverMsg').html('server is error');
+                alert('ws.onerror');
+            };
+        };
+
+        var ulElement = document.getElementById('StreamToMe');
+
+        getWebSocketMessages(function (message) {
+            ulElement.innerHTML = ulElement.innerHTML += `<li>${message.data}</li>`;
+            window.scrollTo(0,document.body.scrollHeight);
+        });
+
+        $('#SendMsgBtn').click(function (event) {
+            var request = {};
+            request['id'] = 'Max';
+            request['data'] = 'Hello World!';
+            console.log('is send');
+            webSocket.send(JSON.stringify(request));
+        });
+
+    }());
+</script>
