@@ -6,4 +6,4 @@
 2. 其他演算法應用
 3. webSocket範例
 4. .Net Core連接 firebase範例
-5. webSocket + .Net Core + firebase 使用類似firebase提供 Realtime streaming 方法連接（類似 RxJS寫法 
+5. webSocket + .Net Core + firebase 使用 firebase 提供的 Realtime streaming 方法連接（類似 RxJS寫法 
